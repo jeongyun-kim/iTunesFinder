@@ -94,9 +94,9 @@ final class SearchTableViewCell: BaseTableViewCell {
     }
     
     func configureCell(_ data: App) {
-        guard let appImageUrl = URL(string: data.artworkUrl512) else { return }
+        guard let appImageUrl = URL(string: data.appIconImageURL) else { return }
         appIconImageView.kf.setImage(with: appImageUrl)
-        appNameLabel.text = data.trackName
-        genreNameLabel.text = data.primaryGenreName
+        appNameLabel.text = data.appName
+        genreNameLabel.text = data.genre
     }
 }

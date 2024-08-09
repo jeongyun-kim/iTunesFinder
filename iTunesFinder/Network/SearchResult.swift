@@ -13,14 +13,29 @@ struct SearchResult: Decodable {
 }
 
 struct App: Decodable {
-    let artworkUrl512: String // 앱아이콘 512
+    let appIconImageURL: String // 앱아이콘 100
     let screenshotUrls: [String]
-    let currentVersionReleaseDate: String // 최근 업데이트 날짜
-    let artistName: String // 앱 이름
-    let primaryGenreName: String // 기본 카테고리
-    let formattedPrice: String // 가격
-    let trackName: String // 부제목
+    let currentReleaseDate: String // 최근 업데이트 날짜
+    let sellerName: String // 앱 이름
+    let genre: String // 기본 카테고리
+    let price: String // 가격
+    let appName: String // 부제목
     let description: String // 앱 설명
-    let averageUserRating: Double // 별점
-    let userRatingCount: Int // 리뷰수
+    let rating: Double // 별점
+    let ratingCnt: Int // 리뷰수
+    let version: String // 최신 버전
+    
+    enum CodingKeys: String, CodingKey {
+        case appIconImageURL = "artworkUrl100"
+        case screenshotUrls
+        case currentReleaseDate = "currentVersionReleaseDate"
+        case sellerName = "sellerName"
+        case genre = "primaryGenreName"
+        case price = "formattedPrice"
+        case appName = "trackName"
+        case description
+        case rating = "averageUserRating"
+        case ratingCnt = "userRatingCount"
+        case version
+    }
 }
