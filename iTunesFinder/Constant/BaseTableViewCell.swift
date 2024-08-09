@@ -14,7 +14,6 @@ class BaseTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupHierarchy()
         setupConstraints()
-        setupUI()
     }
     
     func setupHierarchy() {
@@ -22,10 +21,6 @@ class BaseTableViewCell: UITableViewCell {
     }
     
     func setupConstraints() {
-        
-    }
-    
-    func setupUI() {
         
     }
     

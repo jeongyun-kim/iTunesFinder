@@ -16,6 +16,7 @@ class BaseViewController: UIViewController {
         setupHierarchy()
         setupConstraints()
         setupUI()
+        bind()
     }
     
     func setupHierarchy() {
@@ -27,6 +28,10 @@ class BaseViewController: UIViewController {
     }
     
     func setupUI() {
+        
+    }
+    
+    func bind() {
         
     }
 }
