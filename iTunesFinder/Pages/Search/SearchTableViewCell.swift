@@ -72,7 +72,6 @@ final class SearchTableViewCell: BaseTableViewCell {
             make.leading.greaterThanOrEqualTo(labelStackView.snp.trailing).offset(8)
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.centerY.equalTo(contentView.snp.centerY)
-            make.width.equalTo(70)
         }
     }
     
