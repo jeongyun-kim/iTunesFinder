@@ -13,20 +13,20 @@ final class SearchViewModel {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        let searchBtnTapped: ControlEvent<Void>
-        let keyword: ControlProperty<String>
+        let searchBtnTapped: Observable<ControlProperty<String>.Element>
         let cancelBtnTapped: ControlEvent<Void>
+        let transitionDetailView: ControlEvent<App>
     }
     
     struct Output {
         let searchResults: PublishRelay<[App]>
+        let transitionDetailView: ControlEvent<App>
     }
     
     func transform(_ input: Input) -> Output {
         let searchResults = PublishRelay<[App]>()
 
         input.searchBtnTapped
-            .withLatestFrom(input.keyword) // 입력된 키워드 가져오기
             .throttle(.seconds(3), scheduler: MainScheduler.instance) // 3초에 한 번씩
             .flatMap { NetworkService.shared.fetchSearchResults($0) } // Observable 벗겨서 가져오기
             .map { $0.results } // SearchResults의 results만 가져오기
@@ -39,7 +39,7 @@ final class SearchViewModel {
             .bind(to: searchResults)
             .disposed(by: disposeBag)
 
-        let output = Output(searchResults: searchResults)
+        let output = Output(searchResults: searchResults, transitionDetailView: input.transitionDetailView)
         return output
     }
 }

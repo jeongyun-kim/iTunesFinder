@@ -45,17 +45,26 @@ final class SearchViewController: BaseViewController {
     
     override func bind() {
         let searchKeyword = searchController.searchBar.rx.text.orEmpty
-        let searchBtnTapped = searchController.searchBar.rx.searchButtonClicked
+        let searchBtnTapped = searchController.searchBar.rx.searchButtonClicked.withLatestFrom(searchKeyword)
         let cancelBtnTapped = searchController.searchBar.rx.cancelButtonClicked
+        let transitionDetailView = tableView.rx.modelSelected(App.self)
         
-        let input = SearchViewModel.Input(searchBtnTapped: searchBtnTapped, keyword: searchKeyword, 
-                                          cancelBtnTapped: cancelBtnTapped)
+        let input = SearchViewModel.Input(searchBtnTapped: searchBtnTapped, 
+                                          cancelBtnTapped: cancelBtnTapped, transitionDetailView: transitionDetailView)
         let output = vm.transform(input)
         
         output.searchResults
             .asDriver(onErrorJustReturn: []) // 에러나면 빈배열 리턴
             .drive(tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
                 cell.configureCell(element)
+            }.disposed(by: disposeBag)
+        
+        output.transitionDetailView
+            .asSignal() 
+            .emit(with: self) { owner, app in
+                let vc = DetailViewController()
+                vc.vm.appData.accept(app)
+                owner.navigationController?.pushViewController(vc, animated: true)
             }.disposed(by: disposeBag)
     }
 }
