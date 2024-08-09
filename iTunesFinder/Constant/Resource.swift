@@ -16,11 +16,13 @@ enum Resource {
         static let bold14 = UIFont.systemFont(ofSize: 14, weight: .bold)
         static let bold15 = UIFont.systemFont(ofSize: 15, weight: .bold)
         static let bold18 = UIFont.systemFont(ofSize: 18, weight: .bold)
+        static let bold20 = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
     
     enum Colors {
         static let lightGary = UIColor.lightGray
         static let systemGray = UIColor.systemGray6
         static let systemTint = UIColor.tintColor
+        static let white = UIColor.white
     }
 }

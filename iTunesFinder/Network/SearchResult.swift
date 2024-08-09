@@ -24,6 +24,7 @@ struct App: Decodable {
     let rating: Double // 별점
     let ratingCnt: Int // 리뷰수
     let version: String // 최신 버전
+    let releaseNotes: String // 업데이트 내역 
     
     enum CodingKeys: String, CodingKey {
         case appIconImageURL = "artworkUrl100"
@@ -37,5 +38,6 @@ struct App: Decodable {
         case rating = "averageUserRating"
         case ratingCnt = "userRatingCount"
         case version
+        case releaseNotes
     }
 }
