@@ -14,6 +14,7 @@ class BaseTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupHierarchy()
         setupConstraints()
+        selectionStyle = .none
     }
     
     func setupHierarchy() {

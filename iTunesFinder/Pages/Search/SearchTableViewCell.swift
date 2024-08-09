@@ -10,13 +10,7 @@ import SnapKit
 import Kingfisher
 
 final class SearchTableViewCell: BaseTableViewCell {
-    private let appIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 12
-        imageView.backgroundColor = .systemGray6
-        return imageView
-    }()
+    private let appIconImageView = AppIconImageView()
     
     private let labelStackView: UIStackView = {
         let stackView = UIStackView()
@@ -27,43 +21,32 @@ final class SearchTableViewCell: BaseTableViewCell {
     
     private let appNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = Resource.Font.regular15
         return label
     }()
     
     private let genreNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 13)
-        label.textColor = .lightGray
+        label.font = Resource.Font.bold13
+        label.textColor = Resource.Colors.lightGary
         return label
     }()
     
     private let companyNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 13)
-        label.textColor = .lightGray
+        label.font = Resource.Font.bold13
+        label.textColor = Resource.Colors.lightGary
         return label
     }()
     
     private let ratingLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 13)
-        label.textColor = .lightGray
+        label.font = Resource.Font.bold13
+        label.textColor = Resource.Colors.lightGary
         return label
     }()
     
-    private let downloadButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.filled()
-        var attributedTitle = AttributedString.init("받기")
-        attributedTitle.font = .systemFont(ofSize: 14, weight: .bold)
-        config.attributedTitle = attributedTitle
-        config.baseBackgroundColor = .systemGray6
-        config.baseForegroundColor = .tintColor
-        config.cornerStyle = .capsule
-        button.configuration = config
-        return button
-    }()
+    private let downloadButton = DownloadButton()
     
     override func setupHierarchy() {
         contentView.addSubview(appIconImageView)

@@ -40,6 +40,7 @@ final class SearchViewController: BaseViewController {
     
     private func setupTableView() {
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
+        tableView.separatorStyle = .none
         tableView.rowHeight = 100
     }
     

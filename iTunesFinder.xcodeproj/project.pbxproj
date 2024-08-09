@@ -26,6 +26,9 @@
 		E0FC07162C6523BB00C8057F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E0FC07152C6523BB00C8057F /* Kingfisher */; };
 		E0FC07192C65FE0000C8057F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC07182C65FE0000C8057F /* DetailViewController.swift */; };
 		E0FC071B2C65FE4500C8057F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC071A2C65FE4500C8057F /* DetailViewModel.swift */; };
+		E0FC071D2C66504000C8057F /* AppIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC071C2C66504000C8057F /* AppIconImageView.swift */; };
+		E0FC071F2C6650F400C8057F /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC071E2C6650F400C8057F /* Resource.swift */; };
+		E0FC07212C66547600C8057F /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC07202C66547600C8057F /* DownloadButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		E0FC07122C65218100C8057F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E0FC07182C65FE0000C8057F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E0FC071A2C65FE4500C8057F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		E0FC071C2C66504000C8057F /* AppIconImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconImageView.swift; sourceTree = "<group>"; };
+		E0FC071E2C6650F400C8057F /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		E0FC07202C66547600C8057F /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,9 @@
 				E0FC06FB2C6511B600C8057F /* BaseViewController.swift */,
 				E0FC07052C65121B00C8057F /* BaseTableViewCell.swift */,
 				E0FC07072C65129200C8057F /* ReusableIdentifier.swift */,
+				E0FC071C2C66504000C8057F /* AppIconImageView.swift */,
+				E0FC071E2C6650F400C8057F /* Resource.swift */,
+				E0FC07202C66547600C8057F /* DownloadButton.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -227,6 +236,8 @@
 				E0FC07192C65FE0000C8057F /* DetailViewController.swift in Sources */,
 				E0FC06E12C650EA200C8057F /* AppDelegate.swift in Sources */,
 				E0FC070C2C65134000C8057F /* SearchViewController.swift in Sources */,
+				E0FC071D2C66504000C8057F /* AppIconImageView.swift in Sources */,
+				E0FC07212C66547600C8057F /* DownloadButton.swift in Sources */,
 				E0FC070E2C65146500C8057F /* NetworkService.swift in Sources */,
 				E0FC07082C65129200C8057F /* ReusableIdentifier.swift in Sources */,
 				E0FC06FC2C6511B600C8057F /* BaseViewController.swift in Sources */,
@@ -236,6 +247,7 @@
 				E0FC07062C65121B00C8057F /* BaseTableViewCell.swift in Sources */,
 				E0FC06F92C650F9100C8057F /* SearchResult.swift in Sources */,
 				E0FC07132C65218100C8057F /* SearchTableViewCell.swift in Sources */,
+				E0FC071F2C6650F400C8057F /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
