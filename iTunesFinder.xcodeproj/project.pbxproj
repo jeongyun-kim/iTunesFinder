@@ -30,6 +30,8 @@
 		E0FC071F2C6650F400C8057F /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC071E2C6650F400C8057F /* Resource.swift */; };
 		E0FC07212C66547600C8057F /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC07202C66547600C8057F /* DownloadButton.swift */; };
 		E0FC07232C66581F00C8057F /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC07222C66581F00C8057F /* Border.swift */; };
+		E0FC07252C666DC000C8057F /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC07242C666DC000C8057F /* ScreenshotCollectionViewCell.swift */; };
+		E0FC07272C666DF200C8057F /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC07262C666DF200C8057F /* BaseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		E0FC071E2C6650F400C8057F /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		E0FC07202C66547600C8057F /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
 		E0FC07222C66581F00C8057F /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		E0FC07242C666DC000C8057F /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0FC07262C666DF200C8057F /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				E0FC071E2C6650F400C8057F /* Resource.swift */,
 				E0FC07202C66547600C8057F /* DownloadButton.swift */,
 				E0FC07222C66581F00C8057F /* Border.swift */,
+				E0FC07262C666DF200C8057F /* BaseCollectionViewCell.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			children = (
 				E0FC07182C65FE0000C8057F /* DetailViewController.swift */,
 				E0FC071A2C65FE4500C8057F /* DetailViewModel.swift */,
+				E0FC07242C666DC000C8057F /* ScreenshotCollectionViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -247,11 +253,13 @@
 				E0FC06FC2C6511B600C8057F /* BaseViewController.swift in Sources */,
 				E0FC06E32C650EA200C8057F /* SceneDelegate.swift in Sources */,
 				E0FC071B2C65FE4500C8057F /* DetailViewModel.swift in Sources */,
+				E0FC07272C666DF200C8057F /* BaseCollectionViewCell.swift in Sources */,
 				E0FC07112C651E8D00C8057F /* SearchViewModel.swift in Sources */,
 				E0FC07062C65121B00C8057F /* BaseTableViewCell.swift in Sources */,
 				E0FC06F92C650F9100C8057F /* SearchResult.swift in Sources */,
 				E0FC07132C65218100C8057F /* SearchTableViewCell.swift in Sources */,
 				E0FC071F2C6650F400C8057F /* Resource.swift in Sources */,
+				E0FC07252C666DC000C8057F /* ScreenshotCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,16 +20,25 @@ final class DetailViewModel {
     
     struct Output {
         let appData: BehaviorRelay<App?>
+        let screenshotUrls: BehaviorRelay<[URL]>
     }
     
     func transform() -> Output {
         let outputData: BehaviorRelay<App?> = BehaviorRelay(value: nil)
+        let screenshotUrls: BehaviorRelay<[URL]> = BehaviorRelay(value: [])
     
         appData
             .bind(to: outputData)
             .disposed(by: disposeBag)
         
-        let output = Output(appData: outputData)
-        return output 
+        appData
+            .compactMap { $0 }
+            .map { $0.screenshotUrls }
+            .map { $0.compactMap { URL(string: $0) }}
+            .bind(to: screenshotUrls)
+            .disposed(by: disposeBag)
+     
+        let output = Output(appData: outputData, screenshotUrls: screenshotUrls)
+        return output
     }
 }

@@ -12,7 +12,7 @@ final class AppIconImageView: UIImageView {
     init() {
         super.init(frame: .zero)
         clipsToBounds = true
-        layer.cornerRadius = 12
+        layer.cornerRadius = 16
         backgroundColor = .systemGray6
     }
     

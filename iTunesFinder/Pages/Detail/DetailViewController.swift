@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import SnapKit
 import Kingfisher
+import SnapKit
 import RxSwift
 import RxCocoa
 
@@ -26,7 +26,10 @@ final class DetailViewController: BaseViewController {
     private let versionLabel = UILabel()
     private let releaseNotesLabel = UILabel()
     private let bottomBorder = Border()
+    private let previewLabel = UILabel()
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     private let descLabel = UILabel()
+    
     
     override func setupHierarchy() {
         view.addSubview(scrollView)
@@ -40,6 +43,8 @@ final class DetailViewController: BaseViewController {
         contentView.addSubview(versionLabel)
         contentView.addSubview(releaseNotesLabel)
         contentView.addSubview(bottomBorder)
+        contentView.addSubview(previewLabel)
+        contentView.addSubview(collectionView)
         contentView.addSubview(descLabel)
     }
     
@@ -55,7 +60,7 @@ final class DetailViewController: BaseViewController {
         
         appIconImageView.snp.makeConstraints { make in
             make.size.equalTo(90)
-            make.top.equalTo(contentView.safeAreaLayoutGuide)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(8)
             make.leading.equalTo(contentView.snp.leading).offset(16)
         }
         
@@ -101,8 +106,19 @@ final class DetailViewController: BaseViewController {
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         
-        descLabel.snp.makeConstraints { make in
+        previewLabel.snp.makeConstraints { make in
             make.top.equalTo(bottomBorder.snp.bottom).offset(20)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(previewLabel.snp.bottom).offset(8)
+            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
+            make.height.equalTo(480)
+        }
+        
+        descLabel.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(contentView.snp.bottom).inset(60)
         }
@@ -110,18 +126,25 @@ final class DetailViewController: BaseViewController {
     
     override func setupUI() {
         navigationItem.largeTitleDisplayMode = .never
-        appNameLabel.font = Resource.Font.bold18
+        appNameLabel.font = Resource.Font.bold22
         appNameLabel.numberOfLines = 0
         sellerNameLabel.font = Resource.Font.regular14
         sellerNameLabel.textColor = Resource.Colors.lightGary
         releaseLabel.text = "새로운 소식"
-        releaseLabel.font = Resource.Font.bold18
+        releaseLabel.font = Resource.Font.bold20
         versionLabel.font = Resource.Font.regular14
         versionLabel.textColor = Resource.Colors.lightGary
         releaseNotesLabel.font = Resource.Font.regular15
         releaseNotesLabel.numberOfLines = 0
         descLabel.font = Resource.Font.regular14
         descLabel.numberOfLines = 0
+        previewLabel.font = Resource.Font.bold20
+        previewLabel.text = "미리보기"
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
+        collectionView.register(ScreenshotCollectionViewCell.self, forCellWithReuseIdentifier: ScreenshotCollectionViewCell.identifier)
     }
     
     override func bind() {
@@ -139,5 +162,29 @@ final class DetailViewController: BaseViewController {
                 owner.releaseNotesLabel.text = data.releaseNotes
                 owner.descLabel.text = data.description
             }.disposed(by: disposeBag)
+        
+        output.screenshotUrls
+            .asDriver()
+            .drive(collectionView.rx.items(cellIdentifier: ScreenshotCollectionViewCell.identifier, cellType: ScreenshotCollectionViewCell.self)) { (row, element, cell) in
+                cell.configureCell(element)
+            }.disposed(by: disposeBag)
+    }
+    
+    private func layout() -> UICollectionViewLayout {
+        let inset: CGFloat = 16
+        let spacing: CGFloat = 12
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.65), heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: inset, bottom: 0, trailing: inset)
+        section.interGroupSpacing = spacing
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }
