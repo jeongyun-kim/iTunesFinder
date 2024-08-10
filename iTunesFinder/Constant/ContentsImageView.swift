@@ -1,5 +1,5 @@
 //
-//  AppIconImageView.swift
+//  ContentsImageView.swift
 //  iTunesFinder
 //
 //  Created by 김정윤 on 8/9/24.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-final class AppIconImageView: UIImageView {
+final class ContentsImageView: UIImageView {
     
     init() {
         super.init(frame: .zero)
         clipsToBounds = true
-        layer.cornerRadius = 16
+        layer.cornerRadius = 14
+        contentMode = .scaleAspectFill
         backgroundColor = .systemGray6
     }
     

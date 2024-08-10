@@ -17,7 +17,7 @@ final class DetailViewController: BaseViewController {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    private let appIconImageView = AppIconImageView()
+    private let appIconImageView = ContentsImageView()
     private let appNameLabel = UILabel()
     private let sellerNameLabel = UILabel()
     private let downloadButton = DownloadButton(bgColor: Resource.Colors.systemTint, textColor: Resource.Colors.white, font: Resource.Font.bold15)

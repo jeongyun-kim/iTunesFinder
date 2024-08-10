@@ -11,14 +11,7 @@ import SnapKit
 
 final class ScreenshotCollectionViewCell: BaseCollectionViewCell {
     
-    private let screenshotImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 20
-        imageView.backgroundColor = Resource.Colors.systemGray
-        return imageView
-    }()
+    private let screenshotImageView = ContentsImageView()
     
     override func setupHierarchy() {
         contentView.addSubview(screenshotImageView)

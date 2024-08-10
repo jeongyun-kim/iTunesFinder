@@ -41,7 +41,8 @@ final class SearchViewController: BaseViewController {
     private func setupTableView() {
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         tableView.separatorStyle = .none
-        tableView.rowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     override func bind() {
@@ -58,6 +59,14 @@ final class SearchViewController: BaseViewController {
             .asDriver(onErrorJustReturn: []) // 에러나면 빈배열 리턴
             .drive(tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
                 cell.configureCell(element)
+                
+                Observable.just(element)
+                    .map { $0.screenshotUrls }
+                    .map { $0.compactMap { URL(string: $0) }}
+                    .map { $0.prefix(3) }
+                    .bind(to: cell.collectionView.rx.items(cellIdentifier: ScreenshotCollectionViewCell.identifier, cellType: ScreenshotCollectionViewCell.self)) { (row, element, cell) in
+                        cell.configureCell(element)
+                    }.disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
         
         output.transitionDetailView
