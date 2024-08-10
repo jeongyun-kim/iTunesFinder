@@ -42,11 +42,9 @@ final class NetworkService {
                 // 성공 -> 데이터가 있고 디코딩이 된다면 Next 이벤트로 방출하고 Complete
                 // 실패 -> 에러 던지기
                 if let data, let result = try? JSONDecoder().decode(SearchResult.self, from: data) {
-                    
                     observer.onNext(result)
                     observer.onCompleted()
                 } else {
-                    print(data)
                     observer.onError(NetworkError.invalidData)
                     return
                 }
