@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import SnapKit
 import RxSwift
 import RxCocoa
+import SnapKit
+import Toast
 
 final class SearchViewController: BaseViewController {
     private let vm = SearchViewModel()
@@ -67,6 +68,12 @@ final class SearchViewController: BaseViewController {
                     .bind(to: cell.collectionView.rx.items(cellIdentifier: ScreenshotCollectionViewCell.identifier, cellType: ScreenshotCollectionViewCell.self)) { (row, element, cell) in
                         cell.configureCell(element)
                     }.disposed(by: cell.disposeBag)
+            }.disposed(by: disposeBag)
+        
+        output.errorMessage
+            .asSignal()
+            .emit(with: self) { owner, value in
+                owner.view.makeToast(value)
             }.disposed(by: disposeBag)
         
         output.transitionDetailView
