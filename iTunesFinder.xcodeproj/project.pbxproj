@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0DCEB052C6A0F13009EEF43 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCEB042C6A0F13009EEF43 /* BaseViewModel.swift */; };
 		E0FC06E12C650EA200C8057F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC06E02C650EA200C8057F /* AppDelegate.swift */; };
 		E0FC06E32C650EA200C8057F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC06E22C650EA200C8057F /* SceneDelegate.swift */; };
 		E0FC06EA2C650EA300C8057F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0FC06E92C650EA300C8057F /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0DCEB042C6A0F13009EEF43 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		E0FC06DD2C650EA200C8057F /* iTunesFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FC06E02C650EA200C8057F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0FC06E22C650EA200C8057F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				E0FC07202C66547600C8057F /* DownloadButton.swift */,
 				E0FC07222C66581F00C8057F /* Border.swift */,
 				E0FC07262C666DF200C8057F /* BaseCollectionViewCell.swift */,
+				E0DCEB042C6A0F13009EEF43 /* BaseViewModel.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				E0FC07272C666DF200C8057F /* BaseCollectionViewCell.swift in Sources */,
 				E0FC07112C651E8D00C8057F /* SearchViewModel.swift in Sources */,
 				E0FC07062C65121B00C8057F /* BaseTableViewCell.swift in Sources */,
+				E0DCEB052C6A0F13009EEF43 /* BaseViewModel.swift in Sources */,
 				E0FC06F92C650F9100C8057F /* SearchResult.swift in Sources */,
 				E0FC07132C65218100C8057F /* SearchTableViewCell.swift in Sources */,
 				E0FC071F2C6650F400C8057F /* Resource.swift in Sources */,

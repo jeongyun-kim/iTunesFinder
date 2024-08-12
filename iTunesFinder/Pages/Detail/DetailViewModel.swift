@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class DetailViewModel {
+final class DetailViewModel { // 따로 Input에 들어갈 Interaction이 없으므로 BaseViewModel 채택X
     private let disposeBag = DisposeBag()
     
     let appData: BehaviorRelay<App?> = BehaviorRelay(value: nil)
