@@ -94,4 +94,25 @@ final class NetworkService {
             return Disposables.create()
         }
     }
+    
+    // 4. Alamofire / Single / Result Type
+    func fetchSearchResultsAFSingleRT(_ keyword: String) -> Single<Result<SearchResult, AFError>> {
+        return Single.create { single -> Disposable in
+            let url = "https://itunes.apple.com/search?term=\(keyword)&country=kr&entity=software"
+            
+            AF.request(url)
+                .responseDecodable(of: SearchResult.self) { respose in
+                    switch respose.result {
+                    case .success(let value):
+                        single(.success(.success(value))) // Single success 내부의 Result<SearchResult, AFError>의 success에 검색 결과 보내기
+                    case .failure(let error):
+                        single(.success(.failure(error))) // Single success 내부의 Result<SearchResult, AFError>의 failure에 에러 보내기
+                        // -> Single 자체는 Error를 처리하지 않게 되면서 스트림이 끊기는 일이 일어나지 않음
+                         // -> 대신 그 내부의 값을 Fail로 처리해주면서 에러 핸들링도 동시에 해줄 수 있음
+                    }
+                }
+            
+            return Disposables.create()
+        }
+    }
 }
